@@ -23,7 +23,7 @@ jobs:
           mkdir public
           cp -r cypress/videos public/videos
           cp -r cypress/screenshots public/screenshots
-      - name: Merge test reports
+      # - name: Merge test reports
         # run: npm run combine:report
 
       - name: Generate HTML report
