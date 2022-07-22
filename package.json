@@ -6,7 +6,8 @@
     "cypress-mochawesome-reporter": "^3.2.0"
   },
   "scripts": {
-    "test": "mocha --spec ./cypress/e2e/1-getting-started/*.js --reporter mochaawesome --parallel"
+    "test:chrome": "cypress run --browser chrome",
+    "combine:report": "mochawesome-merge ./mochawesome-report/*.json -o index.json",
+    "generate:report": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   }
-  
 }
