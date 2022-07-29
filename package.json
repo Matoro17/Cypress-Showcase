@@ -1,14 +1,20 @@
 {
-  "devDependencies": {
-    "cypress-mochawesome-reporter": "^3.2.0",
-    "cypress": "4.9.0",
-    "mochawesome": "6.1.1",
-    "mochawesome-merge": "4.1.0",
-    "mochawesome-report-generator": "5.1.0"
-  },
+  "name": "test-scenario",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test:chrome": "cypress run --browser chrome",
-    "combine:report": "mochawesome-merge ./mochawesome-report/*.json -o index.json",
-    "generate:report": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
+    "test": "npx cypress run"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.3.1",
+    "cypress-mochawesome-reporter": "^3.2.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
   }
 }
