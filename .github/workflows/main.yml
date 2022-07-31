@@ -22,7 +22,8 @@ jobs:
         run: |
           curl -L -o backup_pages.zip github.com/Matoro17/Cypress-Showcase/zipball/gh-pages/ 
           mkdir public/
-          unzip backup_pages.zip public/
+          npm run unzip
+          cp -r history/ public/
 
       - name: Copy test execution Report to public page
         run: |
