@@ -17,6 +17,12 @@ jobs:
       - name: Run Cypress tests
         run: npm run test
         continue-on-error: true
+      
+      - name: Download history
+        run: |
+          curl -L -o backup_pages.zip github.com/Matoro17/Cypress-Showcase/zipball/gh-pages/ 
+          mkdir public/
+          unzip backup_pages.zip public/
 
       - name: Copy test execution Report to public page
         run: |
