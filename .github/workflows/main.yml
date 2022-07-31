@@ -20,10 +20,13 @@ jobs:
 
       - name: Copy test execution videos and screenshots
         run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
-          cp -r cypress/reports/html/* public/
+          mkdir -p public/$(date +%Y)/$(date +%m)
+          cp -r cypress/videos public/$(date +%Y)/$(date +%m)/videos
+          cp -r cypress/screenshots public/$(date +%Y)/$(date +%m)/screenshots
+          cp -r cypress/reports/html/* public/$(date +%Y)/$(date +%m)/
+
+      - name: indexing Files
+        run: npm run index-tests
       # - name: Merge test reports
         # run: npm run combine:report
 
