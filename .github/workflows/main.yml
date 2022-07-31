@@ -6,7 +6,7 @@ jobs:
   cypress-test:
     name: Run on Chrome 83
     runs-on: ubuntu-18.04
-    container: cypress/browsers:node16.14.0-chrome99-ff97
+    container: cypress/browsers:node16.14.2-slim-chrome103-ff102
     steps:
       - uses: actions/checkout@v2
 
@@ -18,7 +18,7 @@ jobs:
         run: npm run test
         continue-on-error: true
 
-      - name: Copy test execution videos and screenshots
+      - name: Copy test execution Report to public page
         run: |
           mkdir -p public/$(date +%Y)/$(date +%m)
           cp -r cypress/videos public/$(date +%Y)/$(date +%m)/videos
@@ -27,11 +27,6 @@ jobs:
 
       - name: indexing Files
         run: npm run index-tests
-      # - name: Merge test reports
-        # run: npm run combine:report
-
-     # - name: Generate HTML report
-     #   run: npm run generate:report
       
       - name: Deploy report page to GitHub Page
         uses: JamesIves/github-pages-deploy-action@v4
