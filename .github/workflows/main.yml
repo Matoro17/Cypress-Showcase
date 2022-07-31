@@ -26,7 +26,9 @@ jobs:
           cp -r cypress/reports/html/* public/$(date +%Y)/$(date +%m)/
 
       - name: indexing Files
-        run: npm run index-tests
+        run: |
+          npm run index-tests
+          cp -r index.html public/index.html
       
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3

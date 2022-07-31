@@ -56,7 +56,7 @@ walk('./public', function (err, results) {
     </body>
   </html>
   `;
-  fs.writeFile('public/index.html', template, function () {
+  fs.writeFile('index.html', template, function () {
       console.log('Created index page');
   })
 })
