@@ -18,12 +18,12 @@ jobs:
         run: npm run test
         continue-on-error: true
       
-      # - name: Download history
-      #   run: |
-      #     curl -L -o backup_pages.zip github.com/Matoro17/Cypress-Showcase/zipball/gh-pages/ 
-      #     mkdir public/
-      #     npm run unzip
-      #     cp -r history/* public/
+      - name: Download history
+        run: |
+          curl -L -o backup_pages.zip github.com/Matoro17/Cypress-Showcase/zipball/gh-pages/ 
+          mkdir public/
+          npm run unzip
+          cp -r history/* public/
 
       - name: Copy test execution Report to public page
         run: |
