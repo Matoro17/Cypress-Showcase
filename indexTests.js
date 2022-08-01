@@ -41,7 +41,7 @@ function generateLinks(fileList) {
             width="40" height="40"
           />
           <div class="ml-2">
-            <h6 class="mb-0">Ogivet Maither</h6>
+            <h6 class="mb-0">Teste Run</h6>
             <div class="about">
               <span>${filepath}</span>
             </div>
