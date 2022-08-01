@@ -1,64 +1,4 @@
-var fs = require("fs");
-var path = require("path");
-var walk = async function (dir, done) {
-  var results = [];
-  fs.readdir(dir, function (err, list) {
-    if (err) return done(err);
-    var i = 0;
-    (function next() {
-      var file = list[i++];
-      if (!file) return done(null, results);
-      file = path.resolve(dir, file);
-      fs.stat(file, function (err, stat) {
-        if (stat && stat.isDirectory()) {
-          walk(file, function (err, res) {
-            results = results.concat(res);
-            next();
-          });
-        } else {
-          const extension = path.extname(file);
-          if (extension == ".html") {
-            const result = file.split("public");
-            results.push("public" + result[1].replaceAll("\\", "/"));
-          }
-          next();
-        }
-      });
-    })();
-  });
-};
 
-function generateLinks(fileList) {
-  const builder = [];
-  for (const filename of fileList) {
-    const filepath = filename.replace("public/", "");
-    const element = `
-    <li class="list-group-item d-flex justify-content-between align-content-center">
-      <a href='${filepath}'>
-        <div class="d-flex flex-row">
-          <img
-            src="https://img.icons8.com/color/100/000000/folder-invoices.png"
-            width="40" height="40"
-          />
-          <div class="ml-2">
-            <h6 class="mb-0">Test Run</h6>
-            <div class="about">
-              <span>${filepath}</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    </li>`;
-    builder.push(element);
-  }
-  return builder.join("\n</br>\n");
-}
-
-let links = "";
-
-walk("./public", function (err, results) {
-  links = generateLinks(results);
-  const template = `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -89,13 +29,61 @@ walk("./public", function (err, results) {
     <body>
       <div class="container d-flex justify-content-center">
         <ul class="list-group mt-5 text-white">
-          ${links}
+          
+    <li class="list-group-item d-flex justify-content-between align-content-center">
+      <a href='pass_2022-07-29T094503-0300-todo-report.html'>
+        <div class="d-flex flex-row">
+          <img
+            src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+            width="40" height="40"
+          />
+          <div class="ml-2">
+            <h6 class="mb-0">Teste Run</h6>
+            <div class="about">
+              <span>pass_2022-07-29T094503-0300-todo-report.html</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+</br>
+
+    <li class="list-group-item d-flex justify-content-between align-content-center">
+      <a href='pass_2022-07-29T103118-0300-todo-report.html'>
+        <div class="d-flex flex-row">
+          <img
+            src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+            width="40" height="40"
+          />
+          <div class="ml-2">
+            <h6 class="mb-0">Teste Run</h6>
+            <div class="about">
+              <span>pass_2022-07-29T103118-0300-todo-report.html</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+</br>
+
+    <li class="list-group-item d-flex justify-content-between align-content-center">
+      <a href='pass_2022-08-01T104443-0300-todo-report.html'>
+        <div class="d-flex flex-row">
+          <img
+            src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+            width="40" height="40"
+          />
+          <div class="ml-2">
+            <h6 class="mb-0">Teste Run</h6>
+            <div class="about">
+              <span>pass_2022-08-01T104443-0300-todo-report.html</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
         </ul>
       </div>
     </body>
   </html>
-  `;
-  fs.writeFile("index.html", template, function () {
-    console.log("Created index page");
-  });
-});
+  
