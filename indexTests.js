@@ -58,7 +58,6 @@ let links = "";
 
 walk("./public", function (err, results) {
   links = generateLinks(results);
-  console.log(links)
   const template = `
   <!DOCTYPE html>
   <html lang="en">
