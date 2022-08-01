@@ -38,12 +38,11 @@ function generateLinks(fileList) {
         <div class="d-flex flex-row">
           <img
             src="https://img.icons8.com/color/100/000000/folder-invoices.png"
-            width="40"
+            width="40" height="40"
           />
           <div class="ml-2">
             <h6 class="mb-0">Ogivet Maither</h6>
             <div class="about">
-              <span>${filepath}</span>
               <span>${filepath}</span>
             </div>
           </div>
