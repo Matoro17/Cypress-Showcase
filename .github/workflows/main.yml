@@ -16,7 +16,7 @@ jobs:
           $(npm bin)/cypress verify
       - name: Run Cypress tests
         run: npm run test
-        continue-on-error: true
+        continue-on-error: false
       
       - name: Download history
         run: |
